@@ -44,9 +44,9 @@ df = do.call(rbind, df)
 
 ```
 ## Phase 2 R package brms
-brms (paul-buerkner.github.io/brms/) is an `R` package that provides an interface to fit Bayesian generalized (non-)linear multivariate multilevel models using Stan. We use it to estimate the regression coefficients of our models while adjusting for spatial autocorrelation using a Gaussian process.
+We use the brms package in `R` to run a Bayesian regression to estimate the regression coefficients in our models while adjusting for spatial autocorrelation using a Gaussian process. 
 
-## Phase 2 parameter learning example: bayesian path model with brms
+## Phase 2 Bayesian regression model
 ```splus
 library(brms);library(rstan);options(mc.cores = parallel::detectCores());rstan_options(auto_write = TRUE)
 
