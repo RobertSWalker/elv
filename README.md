@@ -39,7 +39,7 @@ webpage$sendKeysToElement(list(key = "end"))
 Sys.sleep(4)
 html <- remDr$getPageSource()[[1]] #tbls_xml <- readHTMLTable(html)
 html <- read_html(html)
-(df <- html %>% html_table() ) # %>% .[[i]] ) #%>% slice(-1)) datalist[[i]] <- df 
+(df <- html %>% html_table() )
 df = do.call(rbind, df)
 
 ```
@@ -50,8 +50,7 @@ We use the brms package in `R` to run a Bayesian regression to estimate the regr
 ```splus
 library(brms);library(rstan);options(mc.cores = parallel::detectCores());rstan_options(auto_write = TRUE)
 
-priors = c(#set_prior("normal(0, 5)", class = "Intercept"),
-  set_prior("normal(0, .5)", class = "b"))
+priors = c(set_prior("normal(0, .5)", class = "b"))
 priors
 df$Year <- df$Year/1000
 m1 <- brm( 
@@ -64,10 +63,10 @@ m1 <- brm(
           seed = 14, sample_prior = T)
 prior_summary(m1)
 m1
-pl <- plot(m1, N = 4, ask = FALSE) #Trace and Density Plots for MCMC Samples
+pl <- plot(m1, N = 4, ask = FALSE)
 posterior_summary(m1)
 bayes_R2(m1) #.33 slow
 conditional_effects(m1, effects = c("Year"), points=F) #slow
 saveRDS(m1,"m1.Rds")
-m1 <- readRDS("m1.Rds") 
+
 ```
