@@ -10,7 +10,7 @@ Data are scraped from the electronic Human Relations Area Files (https://ehrafwo
 ## Phase 1: web scraping
 Rselenium is an `R` package for scraping websites
 
-## Phase 1 scraping example of info tables off of eHRAF
+## Phase 1 scraping example of info tables from eHRAF
 ```splus
 library(RSelenium);library(XML)
 
