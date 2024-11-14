@@ -50,12 +50,10 @@ We use the brms package in `R` to run a Bayesian regression to estimate the regr
 ```splus
 library(brms);library(rstan);options(mc.cores = parallel::detectCores());rstan_options(auto_write = TRUE)
 
-priors = c(set_prior("normal(0, .5)", class = "b"))
-priors
 df$Year <- df$Year/1000
 m1 <- brm( 
           bf(elv ~ 1 + Year + subsistence + log(Documents) + gp(latitude, longitude, scale = T)),
-          prior = priors, 
+          prior = c(prior(normal(0, .5), class = b)
           family = bernoulli,
           data = df,
           iter =  1e4, chains = 4, cores = 4, save_all_pars = TRUE,
